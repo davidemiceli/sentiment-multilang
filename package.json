@@ -1,0 +1,37 @@
+{
+  "name": "sentiment-multilang",
+  "version": "0.0.1",
+  "description": "Multilanguage AFINN-based sentiment analysis for Node.js",
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [
+    "sentiment",
+    "analysis",
+    "nlp",
+    "sentiment analysis",
+    "multilanguage"
+  ],
+  "author": "davidemiceli",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidemiceli/sentiment-multilang.git"
+  },
+  "files": [
+    "index.js",
+    "example.js",
+    "lib"
+  ],
+  "bugs": {
+    "url": "https://github.com/davidemiceli/sentiment-multilang/issues"
+  },
+  "maintainers": [
+    "davidemiceli"
+  ],
+  "homepage": "https://github.com/davidemiceli/sentiment-multilang#readme",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test"
+  }
+}
