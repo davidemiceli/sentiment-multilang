@@ -8,7 +8,7 @@ var afinn = require('./lib/AFINN.js');
 function tokenize(input) {
     return input
         .toLowerCase()
-        .replace(/^\s+|^0-9+|[^a-z-úñäâàáéèëêïîöôùüûœç\- ]+/g, '')
+        .replace(/^\s+|^0-9+|[^a-z-úñäâàáéèëêïîíìöôùüûœç\- ]+/g, '')
         .replace('/ {2,}/',' ')
         .split(' ');
 };
@@ -28,18 +28,20 @@ module.exports = function(phrase, lang, callback) {
         negative    = [];
     
     // Iterate over tokens if language is knowed
-    var len = (lang === 'unknown') ? 0: tokens.length;
-    while (len--) {
-        // var prevobj = (len > 0) ? String(tokens[len-1]): "";
-        var negation = (afinn["negations"][lang][tokens[len-1]]) ? -1 : 1;
-        var obj = afinn["truncated"][lang] ? tokens[len].replace(/[aeiouúäâàáéèëêïîöôùüû]$/, "") : String(tokens[len]);
-        var item = Number(afinn[lang][obj]);
-        if (!afinn[lang][obj]) continue;
-        
-        words.push(obj);
-        if (item > 0) positive.push(obj);
-        if (item < 0) negative.push(obj);
-        score += item*negation;
+    var len = tokens.length;
+    if (lang !== 'unknown') {
+        while (len--) {
+            // var prevobj = (len > 0) ? String(tokens[len-1]): "";
+            var negation = (afinn["negations"][lang] && afinn["negations"][lang][tokens[len-1]]) ? -1 : 1;
+            var obj = afinn["truncated"][lang] ? tokens[len].replace(/[aeiouúäâàáéèëêïîíìöôùüû]$/, "") : String(tokens[len]);
+            var item = Number(afinn[lang][obj]);
+            if (!afinn[lang][obj]) continue;
+            
+            words.push(obj);
+            if (item > 0) positive.push(obj);
+            if (item < 0) negative.push(obj);
+            score += item*negation;
+        }
     }
     
     // Handle optional async interface

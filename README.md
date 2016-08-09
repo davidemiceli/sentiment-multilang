@@ -3,7 +3,7 @@
 
 Sentiment is a Node.js module that uses the [AFINN-111](http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010) wordlist to perform [sentiment analysis](http://en.wikipedia.org/wiki/Sentiment_analysis) on arbitrary blocks of input text.
 
-It supports the following languages: English, French, Spanish, and Italian. For languages other than english, it uses a locale transposition of AFINN-111 wordlist.
+It supports the following languages: English, French, Spanish, and Italian. For languages other than english, it uses a locale transposition of AFINN-111 wordlist. The wordlist can be extended adding words too.
 
 ## Installation
 `npm install sentiment-multilang`
